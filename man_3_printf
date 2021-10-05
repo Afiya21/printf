@@ -1,58 +1,134 @@
-.TH man 3 "05 Octobre 2021" "_printf man page"
-. SH NAME
-printf - prints the character(s)
+.\" _printf man page
+.\"
+.\"
+.\"
+.\"
+.\"
+.TH _PRINTF "oct 05 2021" "0.1" "Library functions manual"
+
+.SH NAME
+.SH ""
+
+.B _printf
+- custom version for printf function.
+
 .SH SYNOPSIS
+.SH ""
+
 #include "main.h"
-int _printf(const char *format, ...);
 
-## :books: DESCRIPTION :books:
+int _printf(const char *[FORMAT], ...);
 
-printf() functions are inbuilt library functions in C programming language which are available in C library by default. These functions are declared and related macros are defined in stdio.h which is a header file in C language.
-We have to include stdio.h file as shown in below C program to make use of these printf() and scanf() library functions in C language.
-In C programming language, printf() function used to print the character, string, float, integer, octal and hexadecimal values onto the output screen.
-We use printf() function with %d format specifier to display the value of an integer variable.
-Similarly %c is used to display character, %f for float variable, %s for string variable, %lf for double and %x for hexadecimal variable.
-To generate a newline,we use \n in C printf() statement.
+.SH DESCRIPTION
+.SH ""
 
-.RS 3
-c   prints a character variable
-.br
-s   prints a string variable
-.br
-d   prints an integer and takes an integer value as a signed decimal integer
-.br
-i   prints an integer and takes in a decimal, hexadecimal, or octal type
-.br
-b   prints a binary number
-.br
-u   prints an unsigned integer
-.br
-o   prints an octal number
-.br
-x   prints a hexadecimal number
-.br
-X   prints a hexadecimal number in caps
-.br
+
+The printf function sends formatted output to stdout.
+A custom _printf() for learning purposes was developed by cohort  #9 students Jimmer and Edward Ortiz.
+_printf() function format string is a character string, beginning and ending in its initial shift state, if any. 
+These arguments are placed using the percentage '%' operator
+
+.SS Compilation
+
+.P
+.RS
+#include "main.h"
+
+$ gcc -Wall -Werror -Wextra -pedantic -Wno-format *.c
+$ gcc -Wall -Werror -Wextra -pedantic -g -Wno-format *.c (for gdb debbuging)
 .RE
 
-.SH RETURN
-The function will return the number of characters printed. If unsuccessful the function will return null.
-.SH EXAMPLES
-To print "Today is Tuesday" you would do as follow, where day is a pointer to a string:
+.SS Printing
+.RS
 
- #include "main.h"
- _printf("Today is %s", day);
+int _printf(const char *[FORMAT], ...);
 
-To print "It is 1" you would do as follows, where time is a pointer to a integer:
+FORMAT is the string that takes n specifier followed by a '%'
+symbol. i.e. "Hello this is %s from %d cohort". '...' is the variadic \
+(any type of variable).
 
- #include "main.h"
- _printf("It is %d", time);
+.SS Example
 
-## :hash: Bot Twitter :hash: 
+.RS
 
- * [@Nebyat Ahmed](https://twitter.com/Afiya_yop)  
- * [@Melkamu_Tafere](https://twitter.com/Melkamu_Tafere)  
-### :email: mail :email:
+.B Input
+.PP
+_printf("Hello this is %s from %d cohort\\n\\", 33);
+.PP
+.B Output
+.PP
+Hello this is %s from %d cohort
+.RE
 
- * [Nebyat Ahmed](2240@holbertonschool.com) 
- * [Melkamu Tafere](1695@holbertonschool.com)
+.SS Return Value
+
+Return value is a n number of characters except NULL
+
+.SH FLAG SPECIFIERS
+.SH ""
+
+custom and non-custom specifier modifiers
+
+.SH THE LENGTH MODIFIERS
+.SH ""
+
+Length modifiers.
+
+.SH THE CONVERSION SPECIFIERS
+.SH ""
+
+.RS
+Current arguments handled by conversion specifiers:
+
+.IT
+.B %
+- % symbol is set without argument and conversion specification has to be'%%'.
+
+.IT
+.B c
+- integer or char argument converted to unsigned char.
+
+.IT
+.B d, i
+- int argument is converted to signed decimal integer.
+
+.IT
+.B s
+- string argument. _printf handles s conversion specifier if the argument value
+ is not a pointer to a literal string. \
+
+.IT
+
+.B o, u, x, X
+- unsigned int argument converted to unsigned octal (o), unsigned decimal (u),
+unsigned hexidecimal notation (x) for lower case and (X) for upper case
+
+.IT
+.B b
+- The unsigned int argument is converted to binary.
+
+.IT
+.B p
+- The pointer is printed in hexidecimal format preceded by '0x'.
+
+.IT
+.B r, R
+- 'r' prints string in reverse. 'R' prints encrypted rot13.
+
+.IT
+.B S
+- ascii <32 & >127 has to appear in the argument string. converted to
+hexadecimal preceded by \x
+
+.RE
+
+.P
+
+.SH "AUTHORS"
+.SH ""
+
+Nebyat AHmed and Melkamu tafere
+
+.B Twitter
+.PP
+@Afiyayop @melkamu_tafere
